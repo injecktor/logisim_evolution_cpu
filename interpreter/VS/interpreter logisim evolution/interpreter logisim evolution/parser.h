@@ -22,5 +22,7 @@ private:
 	std::string get_hex(int op, int rs, int rt, int rd, int shamt, int funct);
 	std::string get_hex(int op, int rs, int rt, int address);
 	std::string get_hex(int op, int address);
+
+	unsigned int bit_offset(int number, int bits_count, int offset);
 };
 

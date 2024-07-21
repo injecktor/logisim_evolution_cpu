@@ -39,5 +39,7 @@ public:
 	std::vector<token_t> tokenize(char a_line[256]);
 private:
 	std::string m_line;
+
+	token_t ident_token(std::string a_token_str);
 };
 

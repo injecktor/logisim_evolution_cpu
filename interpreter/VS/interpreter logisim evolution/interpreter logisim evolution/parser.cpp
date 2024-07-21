@@ -61,29 +61,34 @@ std::string parser_t::parse(std::vector<token_t> tokens)
 std::string parser_t::get_hex(int op, int rs, int rt, int rd, int shamt, int funct)
 {
 	using namespace std;
-	string str_binary = bitset<6>(op).to_string() + bitset<5>(rs).to_string() + bitset<5>(rt).to_string() +
-		bitset<5>(rd).to_string() + bitset<5>(shamt).to_string() + bitset<6>(funct).to_string();
+	unsigned int instr = bit_offset(op, 6, 26) + bit_offset(rs, 5, 21) + bit_offset(rt, 5, 16) +
+		bit_offset(rd, 5, 11) + bit_offset(shamt, 5, 6) + bit_offset(funct, 6, 0);
 	stringstream sstr;
-	sstr << hex << stoi(str_binary);
+	sstr << hex << instr;
 	return sstr.str();
 }
 
 std::string parser_t::get_hex(int op, int rs, int rt, int address)
 {
 	using namespace std;
-	string str_binary = bitset<6>(op).to_string() + bitset<5>(rs).to_string() + bitset<5>(rt).to_string() +
-		bitset<16>(address).to_string();
+	unsigned int instr = bit_offset(op, 6, 26) + bit_offset(rs, 5, 21) + bit_offset(rt, 5, 16) +
+		bit_offset(address, 16, 0);
 	stringstream sstr;
-	sstr << hex << stoi(str_binary);
+	sstr << hex << instr;
 	return sstr.str();
 }
 
 std::string parser_t::get_hex(int op, int address)
 {
 	using namespace std;
-	string str_binary = bitset<6>(op).to_string() + bitset<26>(address).to_string();
+	unsigned int instr = bit_offset(op, 6, 26) + bit_offset(address, 26, 0);
 	stringstream sstr;
-	sstr << hex << stoi(str_binary);
+	sstr << hex << instr;
 	return sstr.str();
+}
+
+unsigned int parser_t::bit_offset(int number, int bits_count, int offset)
+{
+	return (number & (0xffffffff >> (32 - bits_count)) << offset);
 }
 
