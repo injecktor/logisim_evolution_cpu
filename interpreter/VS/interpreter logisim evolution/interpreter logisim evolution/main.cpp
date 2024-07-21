@@ -28,6 +28,7 @@ int main() {
 		vector<token_t> tokens = tokenizer.tokenize(line);
 		if (tokens.size()) {
 			string hex_instr = parser.parse(tokens);
+			output.add_word(hex_instr);
 		}
 		line_count++;
 	}

@@ -17,8 +17,8 @@ public:
 	void finish_file();
 
 private:
-	size_t m_line_count;
-	size_t m_max_line_count;
+	size_t m_word_count;
+	const size_t m_max_word_count;
 	std::ofstream m_file;
 
 	enum output_stats_t {

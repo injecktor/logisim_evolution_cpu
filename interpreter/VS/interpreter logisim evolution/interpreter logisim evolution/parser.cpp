@@ -34,10 +34,10 @@ std::string parser_t::parse(std::vector<token_t> tokens)
 				error("Registers must be specified");
 			}
 			instr = get_hex(0, tokens[2].value1, tokens[3].value1, tokens[1].value1, 0, 0b100000);
-		};
+		} break;
 		case token_type_t::token_sub: {
 
-		};
+		} break;
 		case token_type_t::token_lw: {
 			if (tokens.size() != 3) {
 				error("Incorrect tokens count");
@@ -47,10 +47,10 @@ std::string parser_t::parse(std::vector<token_t> tokens)
 				error("Incorrect tokens. Must be \"lw {register token} {address token}\"");
 			}
 			instr = get_hex(0b100011, tokens[2].value2, tokens[1].value1, tokens[2].value1);
-		};
+		} break;
 		case token_type_t::token_sw: {
 
-		};
+		} break;
 		default: {
 			error("No token handle");
 		}
