@@ -89,7 +89,7 @@ token_t tokenizer_t::ident_token(std::string a_token_str)
 		}
 		else {
 			int value = 0;
-			if (!isdigit(a_token_str[1])) {
+			if (a_token_str.length() > 1 && !isdigit(a_token_str[1])) {
 				std::stringstream lit;
 
 				if (a_token_str[1] == 'x') {
@@ -109,7 +109,7 @@ token_t tokenizer_t::ident_token(std::string a_token_str)
 				}
 			}
 			else {
-				value = stoi(a_token_str.substr(2));
+				value = stoi(a_token_str);
 			}
 			return{ token_type_t::token_literal, value };
 		}
