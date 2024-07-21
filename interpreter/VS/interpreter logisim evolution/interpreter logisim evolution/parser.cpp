@@ -89,6 +89,6 @@ std::string parser_t::get_hex(int op, int address)
 
 unsigned int parser_t::bit_offset(int number, int bits_count, int offset)
 {
-	return (number & (0xffffffff >> (32 - bits_count)) << offset);
+	return (number & (0xffffffff >> (32 - bits_count))) << offset;
 }
 

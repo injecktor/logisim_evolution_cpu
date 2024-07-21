@@ -1,0 +1,2 @@
+v3.0 hex words addressed
+0000: 8c010000 8c020001 221820

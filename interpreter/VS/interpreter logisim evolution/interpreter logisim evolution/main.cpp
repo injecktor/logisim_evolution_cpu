@@ -10,8 +10,8 @@ using namespace std;
 
 size_t line_count = 0;
 
-const string src = "../../../../asm/asm.txt";
-const string dst = "../../../../machine_code/binary_code.txt";
+const string src = "../../../../asm/asm_example.txt";
+const string dst = "../../../../machine_code/example.txt";
 
 int main() {
 	ifstream src_f(src);
