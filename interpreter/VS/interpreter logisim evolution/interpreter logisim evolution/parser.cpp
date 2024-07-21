@@ -36,7 +36,48 @@ std::string parser_t::parse(std::vector<token_t> tokens)
 			instr = get_hex(0, tokens[2].value1, tokens[3].value1, tokens[1].value1, 0, 0b100000);
 		} break;
 		case token_type_t::token_sub: {
-
+			if (tokens.size() != 4) {
+				error("Incorrect tokens count");
+			}
+			if (tokens[1].type != token_type_t::token_register ||
+				tokens[2].type != token_type_t::token_register ||
+				tokens[3].type != token_type_t::token_register) {
+				error("Registers must be specified");
+			}
+			instr = get_hex(0, tokens[2].value1, tokens[3].value1, tokens[1].value1, 0, 0b100010);
+		} break;
+		case token_type_t::token_and: {
+			if (tokens.size() != 4) {
+				error("Incorrect tokens count");
+			}
+			if (tokens[1].type != token_type_t::token_register ||
+				tokens[2].type != token_type_t::token_register ||
+				tokens[3].type != token_type_t::token_register) {
+				error("Registers must be specified");
+			}
+			instr = get_hex(0, tokens[2].value1, tokens[3].value1, tokens[1].value1, 0, 0b100100);
+		} break;
+		case token_type_t::token_or: {
+			if (tokens.size() != 4) {
+				error("Incorrect tokens count");
+			}
+			if (tokens[1].type != token_type_t::token_register ||
+				tokens[2].type != token_type_t::token_register ||
+				tokens[3].type != token_type_t::token_register) {
+				error("Registers must be specified");
+			}
+			instr = get_hex(0, tokens[2].value1, tokens[3].value1, tokens[1].value1, 0, 0b100101);
+		} break;
+		case token_type_t::token_slt: {
+			if (tokens.size() != 4) {
+				error("Incorrect tokens count");
+			}
+			if (tokens[1].type != token_type_t::token_register ||
+				tokens[2].type != token_type_t::token_register ||
+				tokens[3].type != token_type_t::token_register) {
+				error("Registers must be specified");
+			}
+			instr = get_hex(0, tokens[2].value1, tokens[3].value1, tokens[1].value1, 0, 0b101010);
 		} break;
 		case token_type_t::token_lw: {
 			if (tokens.size() != 3) {
@@ -49,7 +90,14 @@ std::string parser_t::parse(std::vector<token_t> tokens)
 			instr = get_hex(0b100011, tokens[2].value2, tokens[1].value1, tokens[2].value1);
 		} break;
 		case token_type_t::token_sw: {
-
+			if (tokens.size() != 3) {
+				error("Incorrect tokens count");
+			}
+			if (tokens[1].type != token_type_t::token_register ||
+				tokens[2].type != token_type_t::token_address) {
+				error("Incorrect tokens. Must be \"lw {register token} {address token}\"");
+			}
+			instr = get_hex(0b101011, tokens[2].value2, tokens[1].value1, tokens[2].value1);
 		} break;
 		default: {
 			error("No token handle");
