@@ -16,13 +16,11 @@ std::vector<token_t> tokenizer_t::tokenize(char a_line[256])
 	m_line = a_line;
 	size_t i = 0;
 	std::string token_str;
-	int token_start_pos = 0;
 	bool token_started = false;
 	bool token_ended = false;
 	while (m_line[i] != '\0') {
 		if (m_line[i] != ' ' && !token_started) {
 			token_started = true;
-			token_start_pos = i;
 		}
 		else if (m_line[i] == ' ' && token_started) {
 			token_started = false;
@@ -73,7 +71,7 @@ token_t tokenizer_t::ident_token(std::string a_token_str)
 		return{ token_type_t::token_subi };
 	}
 	else if (a_token_str[0] == 'r') {
-		int number = stoi(a_token_str.substr(1, a_token_str.length() - 1));
+		int number = stoi(a_token_str.substr(1));
 		if (number >= 0 && number <= 31) {
 			return{ token_type_t::token_register, number };
 		}
