@@ -1,17 +1,5 @@
 #include "parser.h"
 
-std::array<token_type_t, 9> instructions = {
-	token_type_t::token_add,
-	token_type_t::token_sub,
-	token_type_t::token_and,
-	token_type_t::token_or,
-	token_type_t::token_slt,
-	token_type_t::token_beq,
-	token_type_t::token_j,
-	token_type_t::token_lw,
-	token_type_t::token_sw
-};
-
 parser_t::parser_t()
 {
 }
