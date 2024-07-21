@@ -6,8 +6,8 @@
 #include <array>
 #include <cassert>
 #include <bitset>
+#include "sstream"
 
-extern size_t line_count;
 extern void error(std::string msg);
 
 std::array<token_type_t, 9> instructions = {
@@ -30,8 +30,8 @@ public:
 
 	std::string parse(std::vector<token_t> tokens);
 private:
-	std::string get_binary(int op, int rs, int rt, int rd, int shamt, int funct);
-	std::string get_binary(int op, int rs, int rt, int address);
-	std::string get_binary(int op, int address);
+	std::string get_hex(int op, int rs, int rt, int rd, int shamt, int funct);
+	std::string get_hex(int op, int rs, int rt, int address);
+	std::string get_hex(int op, int address);
 };
 

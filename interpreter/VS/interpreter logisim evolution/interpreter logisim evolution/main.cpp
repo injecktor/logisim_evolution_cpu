@@ -3,6 +3,9 @@
 #include <string>
 #include <cassert>
 
+#include "parser.h"
+#include "output.h"
+
 using namespace std;
 
 size_t line_count = 0;
@@ -19,8 +22,15 @@ int main() {
 
 	char line[256]{ 0 };
 
-	while (src_f.getline(line, sizeof(line))) {
+	tokenizer_t tokenizer;
+	parser_t parser;
+	output_t output(dst);
 
+	while (src_f.getline(line, sizeof(line))) {
+		vector<token_t> tokens = tokenizer.tokenize(line);
+		if (tokens.size()) {
+			string hex_instr = parser.parse(tokens);
+		}
 		line_count++;
 	}
 

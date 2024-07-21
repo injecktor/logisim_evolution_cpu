@@ -4,7 +4,6 @@
 #include <vector>
 #include <cassert>
 
-extern size_t line_count;
 extern void error(std::string msg);
 
 enum class token_type_t {
