@@ -26,7 +26,7 @@ std::string parser_t::parse(std::vector<token_t> tokens)
 	switch (tokens[0].type) {
 		case token_type_t::token_add: {
 			if (tokens.size() != 4) {
-				error("Incorrect registers count");
+				error("Incorrect tokens count");
 			}
 			if (tokens[1].type != token_type_t::token_register ||
 				tokens[2].type != token_type_t::token_register ||
@@ -39,6 +39,13 @@ std::string parser_t::parse(std::vector<token_t> tokens)
 
 		};
 		case token_type_t::token_lw: {
+			if (tokens.size() != 3) {
+				error("Incorrect tokens count");
+			}
+			if (tokens[1].type != token_type_t::token_register ||
+				tokens[2].type != token_type_t::token_address) {
+				error("Incorrect tokens. Must be \"lw {register token} {address token}\"");
+			}
 			instr = get_hex(0b100011, tokens[2].value2, tokens[1].value1, tokens[2].value1);
 		};
 		case token_type_t::token_sw: {

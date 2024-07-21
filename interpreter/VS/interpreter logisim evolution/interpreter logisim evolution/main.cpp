@@ -37,5 +37,7 @@ int main() {
 }
 
 void error(string msg) {
-	assert(false, line_count + ": " + msg);
+	string error_msg = to_string(line_count) + ": " + msg;
+	cerr << error_msg;
+	abort();
 }
