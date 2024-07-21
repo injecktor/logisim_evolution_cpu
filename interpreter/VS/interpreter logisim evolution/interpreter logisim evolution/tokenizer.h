@@ -3,6 +3,8 @@
 #include <string>
 #include <vector>
 #include <cassert>
+#include <sstream>
+#include <bitset>
 
 extern void error(std::string msg);
 
@@ -17,7 +19,10 @@ enum class token_type_t {
 	token_lw,
 	token_sw,
 	token_register,
-	token_address
+	token_address,
+	token_addi,
+	token_subi,
+	token_literal
 };
 
 struct token_t {

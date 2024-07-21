@@ -66,6 +66,12 @@ token_t tokenizer_t::ident_token(std::string a_token_str)
 	else if (a_token_str == "sw") {
 		return{ token_type_t::token_sw };
 	}
+	else if (a_token_str == "addi") {
+		return{ token_type_t::token_addi };
+	}
+	else if (a_token_str == "subi") {
+		return{ token_type_t::token_subi };
+	}
 	else if (a_token_str[0] == 'r') {
 		int number = stoi(a_token_str.substr(1, a_token_str.length() - 1));
 		if (number >= 0 && number <= 31) {
@@ -80,6 +86,32 @@ token_t tokenizer_t::ident_token(std::string a_token_str)
 			int number1 = stoi(a_token_str.substr(0, index));
 			int number2 = stoi(a_token_str.substr(index + 2, a_token_str.find(')')));
 			return{ token_type_t::token_address, number1, number2 };
+		}
+		else {
+			int value = 0;
+			if (!isdigit(a_token_str[1])) {
+				std::stringstream lit;
+
+				if (a_token_str[1] == 'x') {
+					value = std::stoi(a_token_str.substr(2), nullptr, 16);
+				}
+				else if (a_token_str[1] == 'd') {
+					value = stoi(a_token_str.substr(2));
+				}
+				else if (a_token_str[1] == 'o') {
+					value = std::stoi(a_token_str.substr(2), nullptr, 8);
+				}
+				else if (a_token_str[1] == 'b') {
+					value = std::stoi(a_token_str.substr(2), nullptr, 2);
+				}
+				else {
+					error("Incorrect literal base");
+				}
+			}
+			else {
+				value = stoi(a_token_str.substr(2));
+			}
+			return{ token_type_t::token_literal, value };
 		}
 	}
 	else {
