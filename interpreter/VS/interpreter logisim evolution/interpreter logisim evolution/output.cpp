@@ -26,11 +26,19 @@ void output_t::add_word(std::string a_word)
 		}
 		m_file << '\n' << tmp_string << std::hex << hex_word_count.str() << ':';
 	}
-	m_file << ' ' << a_word;
+	m_file << ' ';
+	for (size_t i = 0; i < 8 - a_word.length(); i++)
+	{
+		m_file << '0';
+	}
+	m_file << a_word;
 	m_word_count++;
 }
 
 void output_t::finish_file()
 {
+	while (m_word_count != m_max_word_count) {
+		add_word("00000000");
+	}
 	m_file.close();
 }
