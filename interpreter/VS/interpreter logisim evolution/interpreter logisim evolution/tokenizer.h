@@ -22,8 +22,8 @@ enum class token_type_t {
 
 struct token_t {
 	token_type_t type;
-	signed int value1; // -1 = unused
-	signed int value2;
+	int value1; // -1 = unused
+	int value2;
 	token_t(token_type_t a_type, signed int a_value1 = -1, signed int a_value2 = -1)
 		: type(a_type),
 		value1(a_value1),

@@ -15,10 +15,8 @@ const string dst = "../../../../machine_code/binary_code.txt";
 
 int main() {
 	ifstream src_f(src);
-	ofstream dst_f(dst);
 
 	assert(src_f.is_open(), "Src file wasn't open.");
-	assert(dst_f.is_open(), "Dst file wasn't open.");
 
 	char line[256]{ 0 };
 
@@ -33,6 +31,7 @@ int main() {
 		}
 		line_count++;
 	}
+	output.finish_file();
 
 	return 0;
 }
