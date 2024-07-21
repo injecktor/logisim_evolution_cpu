@@ -11,7 +11,7 @@ using namespace std;
 size_t line_count = 0;
 
 const string src = "../../../../asm/asm_example.txt";
-const string dst = "../../../../machine_code/example.txt";
+const string dst = "../../../../asm_output/example";
 
 int main() {
 	ifstream src_f(src);
