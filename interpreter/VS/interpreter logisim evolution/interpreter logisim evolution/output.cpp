@@ -57,13 +57,3 @@ void output_t::finish_file()
 	}
 	m_file.close();
 }
-
-void output_t::add_word_to_word_address(std::string a_word)
-{
-
-}
-
-void output_t::add_word_to_byte_address(std::string a_word)
-{
-
-}

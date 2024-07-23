@@ -32,8 +32,5 @@ private:
 		addresses_by_instr_word_addressing = 1,
 		addresses_by_instr_byte_addressing = 4,
 	};
-
-	void add_word_to_word_address(std::string a_word);
-	void add_word_to_byte_address(std::string a_word);
 };
 
