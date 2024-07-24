@@ -274,9 +274,11 @@
       <a name="addrWidth" val="16"/>
       <a name="appearance" val="classic"/>
       <a name="contents">addr/data: 16 8
-5 0 21 20 7 0 42 20
-5 0 63 20 1 0 1 ac
-2 0 2 ac 3 0 3 ac
+2 0 21 20 2 0 42 20
+1 0 1 ac 2 0 2 ac
+2 0 41 10 5 0 63 20
+2 0 63 20 1 0 63 20
+3 0 63 20 3 0 3 ac
 </a>
       <a name="label" val="instructions_memory"/>
       <a name="labelvisible" val="true"/>
@@ -308,13 +310,13 @@
     <wire from="(1060,930)" to="(1070,930)"/>
     <wire from="(1130,910)" to="(1150,910)"/>
     <wire from="(1140,1120)" to="(1200,1120)"/>
+    <wire from="(1150,1100)" to="(1150,1470)"/>
     <wire from="(1150,1100)" to="(1200,1100)"/>
+    <wire from="(1150,1470)" to="(1720,1470)"/>
     <wire from="(1150,910)" to="(1150,1100)"/>
     <wire from="(1150,910)" to="(1230,910)"/>
     <wire from="(1240,1110)" to="(1270,1110)"/>
     <wire from="(1270,1110)" to="(1270,1170)"/>
-    <wire from="(1270,1170)" to="(1270,1470)"/>
-    <wire from="(1270,1470)" to="(1720,1470)"/>
     <wire from="(1470,960)" to="(1480,960)"/>
     <wire from="(1470,970)" to="(1480,970)"/>
     <wire from="(1470,980)" to="(1480,980)"/>
