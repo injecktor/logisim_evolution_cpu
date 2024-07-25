@@ -38,7 +38,7 @@ void output_t::add_word(std::string a_instr)
 	m_file << ' ';
 	for (size_t i = 0; i < instr_length - a_instr.length(); i++)
 	{
-		m_file << '0';
+		a_instr = '0' + a_instr;
 	}
 	if (m_is_word_addressing) {
 		m_file << a_instr;

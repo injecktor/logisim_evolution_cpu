@@ -58,6 +58,9 @@ token_t tokenizer_t::ident_token(std::string a_token_str)
 	else if (a_token_str == "beq") {
 		return{ token_type_t::token_beq };
 	}
+	else if (a_token_str == "j") {
+		return{ token_type_t::token_j };
+	}
 	else if (a_token_str == "lw") {
 		return{ token_type_t::token_lw };
 	}

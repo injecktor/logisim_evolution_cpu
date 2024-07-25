@@ -39,6 +39,10 @@ std::string parser_t::parse(std::vector<token_t> tokens)
 			opcode = 0b000100;
 			instr_type = i_type_rrl;
 		} break;
+		case token_type_t::token_j: {
+			opcode = 0b000010;
+			instr_type = j_type;
+		} break;
 		case token_type_t::token_lw: {
 			instr_type = i_type_ra;
 			opcode = 0b100011;
@@ -93,7 +97,13 @@ std::string parser_t::parse(std::vector<token_t> tokens)
 			instr = get_hex(opcode, tokens[2].value2, tokens[1].value1, tokens[2].value1);
 		} break;
 		case j_type: {
-
+			if (tokens.size() != 2) {
+				error("Incorrect tokens count");
+			}
+			if (tokens[1].type != token_type_t::token_literal) {
+				error("Incorrect instruction");
+			}
+			instr = get_hex(opcode, tokens[1].value1);
 		} break;
 		default: {
 
@@ -112,11 +122,11 @@ std::string parser_t::get_hex(int op, int rs, int rt, int rd, int shamt, int fun
 	return sstr.str();
 }
 
-std::string parser_t::get_hex(int op, int rs, int rt, int address)
+std::string parser_t::get_hex(int op, int rs, int rt, int immediate)
 {
 	using namespace std;
 	unsigned int instr = bit_offset(op, 6, 26) + bit_offset(rs, 5, 21) + bit_offset(rt, 5, 16) +
-		bit_offset(address, 16, 0);
+		bit_offset(immediate, 16, 0);
 	stringstream sstr;
 	sstr << hex << instr;
 	return sstr.str();
