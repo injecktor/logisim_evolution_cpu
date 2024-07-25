@@ -9,4 +9,4 @@ interpreter/VS/interpreter logisim evolution/interpreter logisim evolution/*.vcx
 asm/*
 !asm/asm_example.txt
 asm_output/*
-!asm_output/example
+!asm_output/example.da
